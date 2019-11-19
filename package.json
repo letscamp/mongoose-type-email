@@ -1,5 +1,5 @@
 {
-  "name": "mongoose-type-email",
+  "name": "@yastech/mongoose-type-email",
   "version": "1.0.11",
   "description": "An email field-type for Mongoose schemas",
   "main": "index.js",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/konsumer/mongoose-type-email.git"
+    "url": "https://github.com/letscamp/mongoose-type-email"
   },
   "keywords": [
     "mongoose",
@@ -20,9 +20,9 @@
   "author": "David Konsumer <konsumer@jetboystudio.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/konsumer/mongoose-type-email/issues"
+    "url": "https://github.com/letscamp/mongoose-type-email/issues"
   },
-  "homepage": "https://github.com/konsumer/mongoose-type-email",
+  "homepage": "https://github.com/letscamp/mongoose-type-email",
   "devDependencies": {
     "jest": "^24.7.1",
     "mockingoose": "^2.9.1",
