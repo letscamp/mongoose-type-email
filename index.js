@@ -31,9 +31,5 @@ Email.prototype.get = function (val) {
     return val.toLowerCase()
 }
 
-Email.prototype.checkRequired = function (val) {
-    return typeof val === 'string' && validateEmail(val, this.options);
-};
-
 mongoose.SchemaTypes.Email = module.exports = Email
 mongoose.Types.Email = String
