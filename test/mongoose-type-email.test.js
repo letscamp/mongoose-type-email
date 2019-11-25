@@ -10,7 +10,7 @@ var UserSimple = mongoose.model('UserSimple', new mongoose.Schema({
 }))
 
 var UserAllowBlank = mongoose.model('UserAllowBlank', new mongoose.Schema({
-  email: { type: mongoose.SchemaTypes.Email, allowBlank: true }
+  email: { type: mongoose.SchemaTypes.Email, required: false }
 }))
 
 var UserRequired = mongoose.model('UserRequired', new mongoose.Schema({
@@ -34,22 +34,13 @@ describe('mongoose-type-email', function () {
     user.save(done)
   })
 
-  it('should not enable blank value', function (done) {
-    var user = new UserSimple()
-    user.email = ''
-    user.validate(function (err) {
-      expect(err.errors.email.message).toEqual('invalid email address')
-      done()
-    })
-  })
-
-  it('should enable an empty string value when allowBlank', function (done) {
+  it('should enable an empty string value when required is not true', function (done) {
     var user = new UserAllowBlank()
     user.email = ''
     user.save(done)
   })
 
-  it('should enable a null value when allowBlank', function (done) {
+  it('should enable a null value when required is not true', function (done) {
     var user = new UserAllowBlank()
     user.email = null
     user.save(done)
@@ -72,14 +63,6 @@ describe('mongoose-type-email', function () {
     })
   })
 
-  it('should not enable blank value with custom message', function (done) {
-    var user = new UserCustomMessage()
-    user.email = ''
-    user.validate(function (err) {
-      expect(err.errors.email.message).toEqual('error.email')
-      done()
-    })
-  })
 
   describe('Default error message', () => {
     var UserDefaultCustomMessage;
@@ -92,15 +75,6 @@ describe('mongoose-type-email', function () {
 
     afterAll(() => {
       delete mongoose.SchemaTypes.Email.defaults.message
-    })
-
-    it('should not enable blank value with custom default message', function (done) {
-      var user = new UserDefaultCustomMessage();
-      user.email = ''
-      user.validate(function (err) {
-        expect(err.errors.email.message).toEqual('Email address is invalid')
-        done()
-      })
     })
   })
 })
