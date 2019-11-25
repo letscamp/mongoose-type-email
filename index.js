@@ -5,7 +5,7 @@ var regEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,6
 
 function validateEmail (val, options) {
   var required = (typeof options.required === 'function') ? options.required() : options.required
-  if (!required) {
+  if ((val === '' || val === null) && !required) {
     return true
   }
   return regEmail.test(val)
